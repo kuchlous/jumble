@@ -1,0 +1,24 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#common_words_btn").tooltip({title: "6000 most common words"});
+    $("#inventure_words_btn").tooltip({title: "Weekly words at Inventure Academy"});
+    $("#spellbee_words_btn").tooltip({title: "Words good for MARS SpellBee"});
+    })
+</script>
+<div class="row">
+  <div class="offset1 span10">
+    <h2 style="text-align:center"> Welcome to SpellApp's Parent/Teacher Resource Corner. </h2>
+    <h2 style="text-align:center"> Choose from one of applications below. </h2>
+    <h3 style="text-align:center"> You can also use the tabs at the top of the screen for navigation. </h2>
+  </div>
+</div>
+<div class="row" style="padding-top:30px">
+  <div class="offset1 span10">
+    <div class="offset1 span3">
+      <%= link_to "Make A WordBox", {:controller => "teachers", :action => "input_word_box"}, :class => "btn btn-success btn-large", :id=>"word_box_btn" %>
+    </div>
+    <div class="offset2 span3">
+      <%= link_to "Add Weekly Words", {:controller => "teachers", :action => "add_words"}, :class => "btn btn-primary btn-large", :id=>"add_words_btn" %>
+    </div>
+  </div>
+</div>

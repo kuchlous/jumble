@@ -1,0 +1,35 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".this_week_btn").tooltip({title: "Words assigned this week"});
+    $(".all_words_btn").tooltip({title: "All words assigned till now"});
+    })
+</script>
+<div class="row">
+  <h2 style="text-align:center"> <%= @school.titleize %> Words</h2>
+</div>
+<% @grades_weeks.each do |grade_weeks| %>
+  <% if grade_weeks[:weeks].size > 0 %>
+    <div class="row" style="padding-top:30px">
+      <div class="offset3 span2">
+        <h3> Class <%= grade_weeks[:grade].year %> </h3>
+      </div>
+      <div class="span2">
+        <% has_this_week = false %>
+        <% grade_weeks[:weeks].each do |week| %>
+          <% if week > Date.today - 7 %>
+            <%= link_to "This Week", {:controller => "home", :action => "spell_class_school_week", :grade => grade_weeks[:grade].year, :school => @school, :start_of_week => week }, :class => "btn btn-primary btn-large this_week_btn" %>
+            <% has_this_week = true %>
+          <% end %>
+        <% end %>
+      </div>
+      <% if has_this_week %>
+      <div class="span2">
+      <% else %>
+      <div class="offset2 span2">
+      <% end %>
+        <%= link_to "All Words", {:controller => "home", :action => "spell_class_school_week", :grade => grade_weeks[:grade].year, :school => @school }, :class => "btn btn-success btn-large all_words_btn" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+

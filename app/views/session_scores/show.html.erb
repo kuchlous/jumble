@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @session_score.user %>
+</p>
+
+<p>
+  <b>Score:</b>
+  <%= @session_score.score %>
+</p>
+
+
+<%= link_to 'Edit', edit_session_score_path(@session_score) %> |
+<%= link_to 'Back', session_scores_path %>

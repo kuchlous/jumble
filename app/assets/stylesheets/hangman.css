@@ -1,0 +1,42 @@
+.alpha_done_char {
+  font-size: 24px;
+  margin: 2px;
+  cursor: default;
+}
+
+.alpha_char {
+  font-size: 24px;
+  margin: 2px;
+  cursor: pointer;
+  color: black;
+}
+
+.word_char {
+  font-size: 24px;
+  margin: 2px;
+  cursor: default;
+}
+
+#letters {
+  padding-top: 30px;
+}
+
+#hangman-image-div {
+  padding-top: 30px;
+}
+
+#new-session-button-div {
+  padding-top: 30px;
+}
+
+.bad_attempt {
+  color: red;
+}
+
+.good_attempt {
+  color: lightgreen;
+}
+
+.hint_attempt {
+  color: lightgray;
+}

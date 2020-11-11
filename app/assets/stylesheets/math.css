@@ -1,0 +1,33 @@
+.times_table {
+  line-height: 50px;
+  font-size: 30px;
+  text-align: center;
+  vertical-align: bottom;
+}
+
+.times_table_form {
+  margin: 0;
+}
+
+.times_table_input {
+  font-size: 30px;
+  height: 30px;
+}
+
+.correct_answer {
+  color: green;
+}
+
+.wrong_answer {
+  color: red;
+  text-decoration: line-through;
+}
+
+.tnumber {
+  width: 60px;
+}
+
+.multiplier {
+  width: 60px;
+}
+

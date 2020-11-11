@@ -1,0 +1,12 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<%= javascript_include_tag('score_history') %> 
+<script type="text/javascript">
+  google.load('visualization', '1.0', {'packages':['corechart']});
+  // Set a callback to run when the Google Visualization API is loaded.
+  google.setOnLoadCallback(drawChart);
+  var score_table = <%= raw @score_table %>;
+</script>
+
+<!--Div that will hold the pie chart-->
+<div id="chart_div"></div>
+

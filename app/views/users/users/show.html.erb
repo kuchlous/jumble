@@ -1,0 +1,9 @@
+<%= link_to t(:edit, :scope => [:users]), edit_user_path(@user) %> | <%= link_to t(:delete, :scope => [:users]), user_path(@user), :confirm => t(:delete_confirmation), :method => :delete %>
+<h2><%= @user.name %></h2>
+<b><%= t(:connected_networks) %></b>
+<%= connected_networks.html_safe %>
+
+<b><%= t(:link_network) -%></b>
+<div class="networks">
+<%= connect_networks.html_safe %>
+</div>

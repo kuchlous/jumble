@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Grade:</b>
+  <%= @grade_week_word.grade_id %>
+</p>
+
+<p>
+  <b>Word:</b>
+  <%= @grade_week_word.word_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_grade_week_word_path(@grade_week_word) %> |
+<%= link_to 'Back', grade_week_words_path %>

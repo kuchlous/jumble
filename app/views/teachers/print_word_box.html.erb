@@ -1,0 +1,44 @@
+<html>
+<head>
+  <script src="http://www.google.com/jsapi" type="text/javascript"> </script> 
+  <script type="text/javascript">
+    google.load("jquery",    "1.7.1",  { uncompressed: true });
+    google.load("jqueryui",    "1.8.16",  { uncompressed: true });
+  </script> 
+  <%= javascript_include_tag "find_words" %>
+  <%= stylesheet_link_tag 'find_words', :media => 'all' %>
+  <%= stylesheet_link_tag 'bootstrap', :media => 'all' %>
+  <%= stylesheet_link_tag 'application', :media => 'all' %>
+  <%= stylesheet_link_tag 'print', :media => 'print' %>
+  <%= stylesheet_link_tag 'find_words_print', :media => 'print' %>
+  <%= stylesheet_link_tag 'find_words_screen' %>
+  <style type="text/css" media="print">
+    @page
+    {
+      size: landscape;
+    }
+  </style>
+</head>
+<body>
+  <script type="text/javascript"> 
+    var print_word_array = <%= raw @word_array_json %>;
+    var in_words_fit = <%= raw @words_fit_json %>;
+    var word_box_id = <%= @word_box_id %>;
+    $(document).ready(function() {
+        start_find_words({ 
+            word_array : print_word_array, 
+            words_fit : in_words_fit,
+            print_msg : true,
+            show_all  : false,
+            show_help      : false,
+            show_rearrange : false,
+            show_audio     : false,
+            callback_fn : function () { window.location.replace("/"); }
+            });
+        window.print();
+    })
+  </script>
+  <div class="container" id="content">
+  </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#grade1_btn").tooltip({title: "Click to play with words for Grade 1"});
+    $("#grade3_btn").tooltip({title: "Click to play with words for Grade 3"});
+    })
+</script>
+<div class="row">
+  <h2 style="text-align:center"> Spell Bee Words</h2>
+</div>
+<div class="row" style="padding-top:30px">
+  <div class="offset5 span2">
+    <%= link_to "Grade 1", {:controller => "home", :action => "spell_class", :grade => '1' }, :class => "btn btn-success btn-large", :id=>"grade1_btn" %>
+  </div>
+</div>
+<div class="row" style="padding-top:30px">
+  <div class="offset5 span2">
+    <%= link_to "Grade 3", {:controller => "home", :action => "spell_class", :grade => '3' }, :class => "btn btn-success btn-large", :id=>"grade3_btn" %>
+  </div>
+</div>

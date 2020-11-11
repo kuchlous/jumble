@@ -1,0 +1,23 @@
+<%= stylesheet_link_tag ('math') %>
+<%= javascript_include_tag ('check_table') %>
+<script type="text/javascript">
+  var tnumber = <%= @number %>;
+</script>
+<div class="row">
+  <div class="offset4 span6">
+    <table class="times_table">
+      <tbody>
+      <% 0.upto 9 do |i| %>
+        <tr class="table_row" id=<%="row#{i}"%> > 
+          <td id=<%="tnumber#{i}"%> class="tnumber"> </td> 
+          <td id=<%="operation#{i}"%> > X </td> 
+          <td id=<%="multiplier#{i}"%> class="multiplier"> </td> 
+          <td> =  </td> 
+          <td> <form id=<%="form#{i}"%> class="times_table_form"> <input class="input-mini times_table_input" autocomplete="off" id=<%="input#{i}"%> type="text"> </form></td> 
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <a id="continue-button" class="btn btn-success btn-large"> CONTINUE </a>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tatoeba:</b>
+  <%= @example_sentence.tatoeba_id %>
+</p>
+
+<p>
+  <b>Text:</b>
+  <%= @example_sentence.text %>
+</p>
+
+
+<%= link_to 'Edit', edit_example_sentence_path(@example_sentence) %> |
+<%= link_to 'Back', example_sentences_path %>

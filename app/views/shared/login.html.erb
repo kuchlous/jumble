@@ -1,0 +1,27 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#play_as_guest_btn").tooltip({title: "If you play as guest, we cannot save your score or history"});
+    })
+</script>
+<div class='row' style="text-align:center">
+    <h1><%= t(:welcome) %></h1>
+</div>
+<div class='row' style="text-align:center">
+    <h1><%= t(:signup) %></h1>
+</div>
+<div class='row' style="text-align:center; padding-top:30px">
+    <%= link_to(image_tag('providers/32px/google.png', :title => 'Google', :size => "64x64"), '/auth/google_oauth2') %>
+    <%= link_to(image_tag('providers/32px/facebook.png', :title => 'Facebook', :size => "64x64"), '/auth/facebook') %>
+</div>
+<div class='row' style="text-align:center; padding-top:30px">
+  <h1> OR </h1>
+</div>
+<div class='row' style="text-align:center; padding-top:30px">
+  <%= link_to "Play As Guest", {:controller => "home", :action => "login_as_guest"}, :class => "btn btn-primary btn-large", :id=>"play_as_guest_btn" %>
+</div>
+<div class='row' style="padding-top:150px; text-align:center">
+    <%= link_to "About", {:controller => "home", :action => "about"}, :class => "btn btn-warning btn-large" %>
+    <%= link_to "Privacy", {:controller => "home", :action => "privacy"}, :class => "btn btn-warning btn-large", :style => "margin-left:50px" %>
+</div>
+
+

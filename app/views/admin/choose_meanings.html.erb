@@ -1,0 +1,10 @@
+<% all_words = @words.collect { |w| '\'' + w.word + '\'' } %>
+<script type="text/javascript">
+  all_words = [<%= all_words.join(',')%>];
+</script>
+<%= javascript_include_tag ('choose_meanings') %>
+
+<h2 id=word_for_meaning> dummy </h2>
+<div id=meaning>
+</div>
+<a id="skip-button" class="btn btn-success btn-large"> SKIP </a>

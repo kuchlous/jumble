@@ -1,0 +1,16 @@
+<%= form_for :word, {:url => "/teachers/make_word_box"} do |f| %>
+  <div class="row">
+    <div class="span4">
+      <div class=input>
+        <textarea id="words" name="words" cols="30" rows="20">
+        </textarea>
+      </div>
+      <input name="commit" class="btn btn-primary" type="submit" value="Make Word Box">
+    </div>
+    <div class="span6" style="text-align:center">
+      <h3> Please type words that you want to fit in the word box. We suggest around 10 words. Please type one word in each line. After typing click the button at the bottom.</h3>
+      <h3 style="text-align:center; padding-top:30px"> OR </h3>
+      <div style="text-align:center; padding-top:30px"> <%= link_to "Create A Random WordBox", {:controller => "teachers", :action => "create_random_word_box"}, :class => "btn btn-primary btn-large", :id=>"add_words_btn" %> </div>
+    </div>
+  </div>
+<% end %>

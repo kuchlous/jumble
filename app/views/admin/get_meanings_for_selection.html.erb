@@ -1,0 +1,20 @@
+<% if @definitions.size > 0 %>
+  <p> <b> Current Definitions - click to choose the most appropriate: </b> </p>
+  <% @definitions.each_with_index do |definition, i| %>
+  <ul>
+    <li> <a onClick="choose_meaning(<%=@word.id%>, <%=definition.id%>)"> <b> <%= definition.gtype %>: </b> <%= definition.meaning %> </a> </li>
+  </ul>
+  <% end %>
+<% end %>
+<b> Select Part of Speech, Type Meaning and Enter to add a new definition <b>
+<% set_new_meaning_path = url_for :controller => "admin", :action => "set_new_meaning" %>
+<%= form_tag set_new_meaning_path, :method => "post" do %>
+  <input type="checkbox" id="gtype" name="gtype" value="noun"> Noun
+  <input type="checkbox" id="gtype" name="gtype" value="verb">Verb 
+  <input type="checkbox" id="gtype" name="gtype" value="adjective">Adjective 
+  <input type="checkbox" id="gtype" name="gtype" value="adverb">Adverb 
+  <br/>
+  <%= text_field_tag "meaning", nil, :placeholder => "New Meaning", :autocomplete => "off", :class => "input-xxlarge" %>
+<% end %>
+
+

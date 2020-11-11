@@ -1,0 +1,139 @@
+<div style="padding-top:20px" class="row">
+  <div class="span6">
+    <div id="audio_and_compare">
+      <h1 id="rev_title"> REVISION </h1>
+      <a id="help-button" class="btn btn-warning" data-toggle="modal" href="#spell_help_modal">How To Play</a>
+      <div id="audio_div" style="padding-top:20px">
+        <div class="one_audio_div" id="indian_audio_div">
+          <audio id="indian_mp3_file" autoplay="autoplay" controls="controls" src=""> </audio> Indian
+        </div>
+        <div class="one_audio_div" id="american_audio_div">
+          <audio id="american_mp3_file" autoplay="autoplay" controls="controls" src=""> </audio> American
+        </div>
+        <div class="one_audio_div" id="british_audio_div">
+          <audio id="british_mp3_file" controls="controls" src=""> </audio> British
+        </div>
+      </div>
+      <div id="embed_audio_div" style="padding-top:20px">
+        <div class="one_audio_div" id="indian_embed_audio_div">
+          <embed id="embed_indian_mp3_file" width="300" height="30" autostart="true" controls="controls" src=""> American
+        </div>
+        <div class="one_audio_div" id="american_embed_audio_div">
+          <embed id="embed_american_mp3_file" width="300" height="30" autostart="true" controls="controls" src=""> American
+        </div>
+        <div class="one_audio_div" id="british_embed_audio_div">
+          <embed id="embed_british_mp3_file" width="300" height="30" autostart="false" controls="controls" src=""> British
+        </div>
+      </div>
+
+      <% compare_path = url_for :controller => "home", :action => "compare" %>
+      <%= form_tag compare_path, :method => "post", :id => "spell_text_box" do %>
+        <%= text_field_tag "compare", nil, :placeholder => "Spell", :autocomplete => "off" %>
+      <% end %>
+      <%= form_tag compare_path, :method => "post", :id => "spell_multiple_choice" do %>
+        <h3 style="padding-top:20px"> Choose the correct spelling. </h3>
+        <div class="row">
+          <div class="span2">
+            <input type="radio" name="spelling_choice" value="choice0" id="spell_choice0" class="spell_choice"> <span id="spell_choice_word0" class="lead spell_choice_word"> choice0 </span>
+          </div>
+          <div class="offset1 span2">
+            <input type="radio" name="spelling_choice" value="choice1" id="spell_choice1" class="spell_choice"> <span id="spell_choice_word1" class="lead spell_choice_word"> choice1 </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="span2">
+            <input type="radio" name="spelling_choice" value="choice2" id="spell_choice2" class="spell_choice"> <span id="spell_choice_word2" class="lead spell_choice_word"> choice2 </span>
+          </div>
+          <div class="offset1 span2">
+            <input type="radio" name="spelling_choice" value="choice3" id="spell_choice3" class="spell_choice"> <span id="spell_choice_word3" class="lead spell_choice_word"> choice3 </span>
+          </div>
+        </div>
+      <% end %>
+      <div id="meaning">
+      </div>
+    </div>
+    <h1 id="result"> </h1>
+    <a id="skip-button" class="btn btn-success btn-large"> SKIP </a>
+    <div id="rev-button-div">
+      <a id="rev-button" class="btn btn-success btn-large"> REVISION </a>
+      <p> <h4> Review your 'incorrect attempts', and click revision button when you are ready. </h4> </p>
+    </div>
+    <div id="new-session-button-div">
+      <a id="new-session-button" class="btn btn-success btn-large"> NEW SESSION </a>
+      (click when you want to start new set of words)
+    </div>
+    <div style="padding-top:20px" id="hangman-button-div" class="game-button-div">
+      <a id="hangman-button" class="btn btn-success btn-large"> HANGMAN </a>
+      (click to play Hangman)
+    </div>
+    <div style="padding-top:20px" id="find-words-button-div" class="game-button-div">
+      <a id="find-words-button" class="btn btn-success btn-large"> WORD SEARCH </a>
+      (click to play Word Search)
+    </div>
+    <div style="padding-top:20px" id="shoot-and-spell-button-div" class="game-button-div">
+      <a id="shoot-and-spell-button" class="btn btn-success btn-large"> SHOOT AND SPELL </a>
+      (click to play Shooting game)
+    </div>
+  </div>
+  <div class="span4">
+    <div id="dummy_table_div">
+      <table id="dummy_table" class="table">
+      </table>
+    </div>
+    <div id="incorrect_table_div">
+      <h2> Incorrect Attempts </h2>
+      <table id="incorrect_table" class="table">
+        <thead>
+          <tr>
+            <th> Word </th>
+            <th> Attempts </th>
+            <th> Mistakes </th>
+            <th> Star </th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+    <div id="correct_table_div">
+      <h2> Correct Attempts </h2>
+      <table id="correct_table" class="table">
+        <thead>
+          <tr>
+            <th> Word </th>
+            <th> Star </th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="span2">
+    <div class="stars_and_medals">
+      <div class="star_num" id="star_num">
+        <b> <%= @stars %> </b>
+      </div>
+    </div>
+    <div class="hangman_stars_and_medals">
+      <div class="star_num" id="hangman_star_num">
+        <b> <%= @hangman_stars %> </b>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal hide fade" id="spell_help_modal" style="display:none">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>How To Play</h3>
+  </div>
+  <div class="modal-body">
+    <p>Listen to the word, and spell it in the box provided. Hit enter when you are done. If it is a multiple choice question, just click the choice you think
+    is correct. You can hear the word again by pressing the play arrow in the audio box.</p>
+    <p> If audio of example sentence is available you can play it by clicking <img src="/assets/play_audio.png" width="40" height="40"> </p>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+  </div>
+</div>

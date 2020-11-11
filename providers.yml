@@ -1,0 +1,40 @@
+---
+  # Default provider settings
+  default:
+    google:
+      key: KEY
+      secret: SECRET
+      scope: https://www.googleapis.com/auth/userinfo.profile
+    facebook:
+      key: KEY
+      secret: SECRET
+      scope: 'user_about_me,email,publish_stream,offline_access'
+    twitter:
+      key: KEY
+      secret: SECRET
+      scope:
+  # Development settings
+  development:
+    google:
+      # development - localhost:3001
+      key: 205240873162.apps.googleusercontent.com
+      secret: hZNuCd-q9uoHs9qj_0IVzleU
+      scope: https://www.googleapis.com/auth/userinfo.profile
+    facebook:
+      key: 402868609761145
+      secret: 49bac9bd034bd7484ceb55b8bbefe8f6
+      scope: 'user_about_me'
+  # Staging settings
+  staging:
+  # Production settings
+  production:
+    google:
+      key: 205240873162-fr2868v7c6pfmct4vtb5clp9e9p7bfjv.apps.googleusercontent.com
+      secret: Z_g9DAWn8F20vsdqJ3edY4mf
+      scope: https://www.googleapis.com/auth/userinfo.profile
+    facebook:
+      key: 323002787754030
+      secret: ecc3f2eb623df702d6e921084b2ed98c
+      scope: 'user_about_me'
+  # Test settings
+  test:

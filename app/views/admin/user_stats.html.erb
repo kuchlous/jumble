@@ -1,0 +1,14 @@
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<%= javascript_include_tag('user_stats') %> 
+<script type="text/javascript">
+  google.load('visualization', '1.0', {'packages':['corechart']});
+  // Set a callback to run when the Google Visualization API is loaded.
+  google.setOnLoadCallback(drawChart);
+  var user_table = <%= raw @user_table %>;
+  var session_table = <%= raw @sessions_table %>;
+</script>
+
+<!--Div that will hold the bar chart-->
+<div id="user_chart_div"></div>
+<div id="session_chart_div"></div>
+

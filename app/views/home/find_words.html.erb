@@ -1,0 +1,50 @@
+<%= stylesheet_link_tag 'find_words' %>
+<%= javascript_include_tag "find_words" %>
+<% all_words = @words.collect { |w| '\'' + w.word.upcase + '\'' } %>
+<% audios = @words.collect { |w| '\'' + (w.audio_types ? w.audio_types : '') + '\'' } %>
+<script type="text/javascript">
+  $(document).ready(function() {
+    var top_words = [ <%= all_words.join(',')%>];
+    var audios = [<%= audios.join(',')%>];
+    <% if @word_box_id %>
+      var print_word_array = <%= raw @word_array_json %>;
+      var in_words_fit = <%= raw @words_fit_json %>;
+      start_find_words({ 
+            word_array : print_word_array, 
+            words_fit : in_words_fit,
+            audios : audios,
+            print_msg : false,
+            show_all  : true,
+            show_all_delayed : true,
+            show_help : true,
+            show_audio: true,
+            callback_fn : function () { window.location.replace("/home/find_words"); }
+            });
+    <% elsif @is_teacher %>
+      start_find_words({
+            in_words  : top_words,
+            audios : audios,
+            print_msg : false,
+            show_all  : true,
+            show_all_delayed : false,
+            show_help      : true,
+            show_rearrange : true,
+            show_audio     : true,
+            show_print     : true,
+            callback_fn : function () { window.location.replace("/teachers/home"); }
+            });
+    <% else %>
+      start_find_words({
+            in_words  : top_words,
+            audios : audios,
+            print_msg : false,
+            show_all  : true,
+            show_all_delayed : true,
+            show_help      : true,
+            show_rearrange : false,
+            show_audio     : true,
+            callback_fn : function () { window.location.replace("/home/find_words"); }
+            });
+    <% end %>
+  })
+</script>

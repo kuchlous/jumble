@@ -1,0 +1,21 @@
+<%= form_for :word, {:url => "/teachers/add_words_db"} do |f| %>
+  <div class="row">
+    <div class="span4">
+      <label for="school_name"> School </label>
+      <div class="input"> <%= select_tag "school_id", options_for_select(School.get_array_for_select, School.get_default_school) %> </div>
+      <label for="grade"> Grade/Class </label>
+      <div class="input"> <%= select_tag "grade", options_for_select(Grade.get_array_for_select, Grade.get_default_grade) %> </div>
+      <label> Words, One in each line </label>
+      <div class=input>
+        <textarea id="words" name="words" cols="30" rows="20">
+        </textarea>
+      </div>
+      <input name="commit" class="btn btn-primary" type="submit" value="Add">
+    </div>
+    <div class="span6">
+      <h3> If you do not see your school name in the drop-down menu and would like to use SpellApp to give weekly words to your class, please get in touch with us
+           by using the Feedback tab on the right of the screen.
+      </h3>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,27 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#common_words_btn").tooltip({title: "6000 most common words"});
+    $("#inventure_words_btn").tooltip({title: "Weekly words at Inventure Academy"});
+    $("#spellbee_words_btn").tooltip({title: "Words good for MARS Spell Bee"});
+    })
+</script>
+<div class="row">
+  <div class="offset1 span10">
+    <h2 style="text-align:center"> Welcome to SpellApp. </h2>
+    <h2 style="text-align:center"> Choose from one of the sections below to start spelling. </h2> 
+    <h3 style="text-align:center"> You can also use the tabs at the top of the screen for navigation. </h2>
+  </div>
+</div>
+<div class="row" style="padding-top:30px">
+  <div class="offset1 span10">
+    <div class="offset1 span2">
+      <%= link_to "Common Words", {:controller => "home", :action => "common_words"}, :class => "btn btn-success btn-large", :id=>"common_words_btn" %>
+    </div>
+    <div class="offset1 span2">
+      <%= link_to "Inventure Words", {:controller => "home", :action => "choose_school_class_week", :school => "Inventure Academy"},  :class => "btn btn-primary btn-large", :id=>"inventure_words_btn" %>
+    </div>
+    <div class="offset1 span2">
+      <%= link_to "Spell Bee Words", {:controller => "home", :action => "choose_spell_level"}, :class => "btn btn-danger btn-large", :id=>"spellbee_words_btn" %>
+    </div>
+  </div>
+</div>

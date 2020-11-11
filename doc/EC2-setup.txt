@@ -1,0 +1,117 @@
+> bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
+> source ~/.bash_profile
+> rvm install 1.9.2
+> gem install rails
+> aptitude install nginx
+> /etc/init.d/nginx start
+> gem install thin
+> cd "railsapp"
+> mkdir /etc/thin
+> cp config/railsapp.yml /etc/thin/railsapp.yml
+> create file in /etc/nginx/sites-available/domain.com
+> ln -s /etc/nginx/sites-available/ec2-122-248-209-108.ap-southeast-1.compute.amazonaws.com /etc/nginx/sites-enabled/ec2-122-248-209-108.ap-southeast-1.compute.amazonaws.com
+> thin start -cluster 3
+> wget http://nodejs.org/dist/node-v0.1.96.tar.gz
+> gunzip node-v0.1.96.tar.gz
+> tar -xf node-v0.1.96.tar
+> cd node
+> ./configure
+> make  // need to comment out some ssl2 lines
+> make install
+> aptitude install mysql-client mysql-server libmysqlclient-dev
+# ln -s /usr/lib/libmysqlclient.so.16 /usr/lib/libmysqlclient.so
+# install mysql developer from mysql site : does not work from ubuntu install
+> gem install mysql
+> if using rails new, change the adapter to mysql, mysql2 is default but requires mysql-5.5 which does not install
+  on ubuntu
+> thin config -C config/railsapp.yml -c /root/railsapp/ --servers 3 -e production
+
+--------------- git setup --------------------------
+> local: tar a repository and scp to ec2
+> ec2: untar
+> ec2: git checkout -b dummy  # needed for push 
+> local: add following to ~/.ssh/config
+/home/mirafra/.ssh/config
+Host=ec2-122-248-209-108.ap-southeast-1.compute.amazonaws.com
+User=ubuntu
+IdentityFile=/home/mirafra/jumble/doc/jumbletest.pem
+> local: git remote add ec2jumble ssh://ubuntu@ec2-122-248-209-108.ap-southeast-1.compute.amazonaws.com/home/ubuntu/jumble
+> git push ec2jumble
+> git pull ec2jumble
+
+- omniauth setup
+
+> Add to config/initializers/omniauth.rb
+  #Look at https://github.com/intridea/omniauth/wiki/Setting-up-SSL-certificate-locations-in-Linux
+  provider :google_oauth2, pinfo['google']['key'], pinfo['google']['secret'], {
+    :scope => pinfo['google']['scope'],
+    :client_options => {:ssl => {:ca_file => "/etc/ssl/certs/ca-certificates.crt"}}
+  }
+
+  # Needed by google api.
+  ENV['CA_FILE'] = '/etc/ssl/certs/ca-certificates.crt'
+
+ 
+-----------------------------------------------------------------------
+upstream domain1 {
+        server 127.0.0.1:3000;
+        server 127.0.0.1:3001;
+        server 127.0.0.1:3002;
+    }
+
+server {
+            listen   80;
+            server_name ec2-122-248-209-108.ap-southeast-1.compute.amazonaws.com; 
+
+            access_log /root/railsapp/log/access.log;
+            error_log /root/railsapp/log/error.log;
+
+            root   /root/railsapp/public/;
+            index  index.html;
+
+            location / {
+                          proxy_set_header  X-Real-IP  $remote_addr;
+                          proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;
+                          proxy_set_header Host $http_host;
+                          proxy_redirect off;
+
+                          if (-f $request_filename/index.html) {
+                                           rewrite (.*) $1/index.html break;
+                          }
+
+                          if (-f $request_filename.html) {
+                                           rewrite (.*) $1.html break;
+                          }
+
+                         }
+            }
+
+            # for rails 3.1 assets pipeline
+            location ~ ^/assets/ {
+              root /home/ubuntu/jumble/public;
+              gzip_static on; #to serve pre-gzipped version
+              expires max;
+              add_header Cache-Control public;
+
+              break;
+            }
+
+}
+
+Good reference: http://codelikezell.com/setting-up-rails-mysql-php-apache-and-git-on-ec2/
+ 
+- mysql db backup
+  Follow http://pauldowman.com/2009/02/08/mysql-s3-backup. needed to change
+  scripts for later aws gem.
+
+  crontab looks like:
+  # Incremental backup every 10 minutes
+  */10 * * * *  /bin/bash -l -c 'cd /home/ubuntu/jumble/script/mysql-backup && /usr/local/rvm/rubies/ruby-1.9.2-p318/bin/ruby -I . ./incremental_backup.rb >> job.log 2>&1'
+
+  # Full backup every day at 05:01
+  1 5 * * *  /bin/bash -l -c 'cd /home/ubuntu/jumble/script/mysql-backup && /usr/local/rvm/rubies/ruby-1.9.2-p318/bin/ruby -I . ./full_backup.rb >> job.log 2>&1 '
+
+--- For passenger + nginx to see if it fixes db issues----------
+Follow instructions at http://www.modrails.com/documentation/Users%20guide%20Nginx.html.
+
+Note that it install in /opt/nginx so need to run from /opt/nginx/sbin and make conf.d changes there.

@@ -1,0 +1,8 @@
+<h2> School: <%= @school.name %> </h2>
+<h2> Grade : <%= @year %> </h2>
+<h2> Successfully added following words </h2>
+<% @words.each do |word| %>
+  <p> <%= word %> </p>
+<% end %>
+<%= link_to "Back", :controller => "teachers", :action => "add_words" %>
+<%= link_to "Home", :controller => "teachers", :action => "home" %>

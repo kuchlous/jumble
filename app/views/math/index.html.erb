@@ -1,0 +1,15 @@
+<h1> Learn Tables </h1>
+<% 2.upto 13 do |i| %>
+  <%= link_to i.to_s, {:controller => "math", :action => "learn_table", :number => i.to_s }, :class => "btn btn-success btn-large" %>
+<% end %>
+
+<h1> Practice Tables </h1>
+<% 2.upto 13 do |i| %>
+  <%= link_to i.to_s, {:controller => "math", :action => "practice_table", :number => i.to_s }, :class => "btn btn-success btn-large" %>
+<% end %>
+
+<h1> Test Your Tables (Up To The Number In The Box)</h1>
+<% 2.upto 13 do |i| %>
+  <%= link_to i.to_s, {:controller => "math", :action => "check_table", :number => i.to_s }, :class => "btn btn-success btn-large" %>
+<% end %>
+

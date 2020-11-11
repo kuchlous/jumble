@@ -1,0 +1,22 @@
+<%= stylesheet_link_tag ('math') %>
+<%= javascript_include_tag ('practice_table') %>
+<script type="text/javascript">
+  var tnumber = <%= @number %>;
+</script>
+<div class="row">
+  <div class="offset4 span6">
+    <table class="times_table">
+      <tbody>
+      <% 1.upto 10 do |i| %>
+        <tr class="table_row" id=<%="row#{i}"%> > 
+          <td> <%= @number.to_s %> </td> 
+          <td> X </td> 
+          <td> <%= i.to_s %> </td> 
+          <td> =  </td> 
+          <td> <form id=<%="form#{i}"%> class="times_table_form"> <input class="input-mini times_table_input" autocomplete="off" id=<%="input#{i}"%> type="text"> </form></td> 
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

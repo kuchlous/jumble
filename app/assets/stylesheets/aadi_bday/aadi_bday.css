@@ -1,0 +1,77 @@
+body 
+{
+margin: 40px 0px; 
+padding: 0px;
+font-size:100%;
+}
+
+#outer {
+	margin: 0px auto;
+	height: 550px;
+	width: 550px;
+	display: block;
+	position: relative;
+}
+
+#container {
+	margin: 0px auto;
+	height: 550px;
+	width: 550px;
+	display: block;
+	position: fixed;
+	opacity: 1.0;
+}
+
+#message {
+	margin: 0px auto;
+	height: 580px;
+	width: 580px;
+	display: block;
+	position: fixed;
+	opacity: 0.0;
+}
+
+p#instructions {
+	color: #e23627;
+	font:18px Helvetica, arial, sans-serif;
+	text-align: center;
+	opacity: 1.0;
+}
+
+a:link, a:visited { 
+	color: #1498c3;
+	text-decoration: none;
+}
+
+a:hover, a:active { 
+	color: #e23627;
+	text-decoration: none;
+}
+
+.redpixul, .redpixum, .redpixur,
+.redpixml, .redpixmm, .redpixmr,
+.redpixll, .redpixlm, .redpixlr {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background-color: #e23627;	
+}
+
+.greenpix, .acadianpix {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background-color: #1498C4;	
+}
+
+.redpixel {
+  fill:rgb(255,0,0);
+}
+
+.greenpixel {
+  fill:rgb(0,255,0);
+}
+
+.yellowpixel {
+  fill:rgb(0,0,255);
+}

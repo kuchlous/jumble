@@ -1,0 +1,17 @@
+<% all_words = @words.collect { |w| '\'' + w.word.upcase + '\'' } %>
+<script type="text/javascript">
+  window.ImpactPrefix = "/assets/";
+</script>
+<script type="text/javascript" src="/assets/lib/impact/impact.js"></script>
+<script type="text/javascript" src="/assets/lib/shoot_game/shoot.js"></script>
+<canvas id="canvas"></canvas>
+<script type="text/javascript">
+  var all_words = [ <%= all_words.join(',')%>];
+  var callback_shoot_words = function() {
+    window.location.replace("/home/shoot_words");
+  }
+  ig.module('dummy').requires('shoot_game.main').defines(function(){
+            ig.main( '#canvas', ShootWordsGame, 60, 376 * 2 - 8, 576, 1 );
+          });
+</script>
+

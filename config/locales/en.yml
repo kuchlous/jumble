@@ -1,0 +1,58 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  app: 'authpoint'
+  logout: 'Logout'
+  link_network: 'Link or Update Network'
+  delete_confirmation: 'Are you sure?'
+  welcome: 'Welcome to SpellApp.'
+  signup: 'Use your Google or Facebook login.'
+  footnnote: 'You need to have a google account.'
+  flash:
+    auth_success: 'Authentication successful.'
+    auth_failed: 'Authentication failed.'
+    create_user_error: 'Sorry, there was an error creating your user account.'
+    no_auth_data: "Sorry, we didn't recieve any authentication data."
+    logged_out: 'You have been logged out.'
+    access_denied: 'Access denied.'
+    user_updated: 'Account was successfully updated.'
+    post_created: 'Post was successfully created.'
+    post_updated: 'Post was successfully updated.'
+  formtastic:
+    labels:
+      user:
+        name: 'Name'
+        edit:
+          name: 'Name'
+      post:
+        message: 'Message:'
+        user_id: 'User:'
+        user: 'User:'
+        created_at: 'Created At:'
+        updated_at: 'Updated At:'
+        tag_list: 'Tags:'
+        edit:
+          message: 'Message:'
+          user: 'User:'
+          user_id: 'User:'
+          created_at: 'Created At:'
+          updated_at: 'Updated At:'
+          tag_list: 'Tags:'
+    actions:
+      create: "Create %{model}"
+      update: "Update %{model}"
+      user:
+        update: 'Update Account'
+  users:
+    edit: 'Edit Account'
+    delete: 'Delete Account'
+    view: 'View Account'
+  posts:
+    edit: 'Edit Post'
+    delete: 'Delete Post'
+    view: 'View Post'
+    view_all: 'View All Posts'
+    new: 'New Post'
+    list: "Posts - %{name}"
+    none: 'There are currently no posts.'

@@ -1,0 +1,27 @@
+<% if @sentence %>
+  <p> <b> Example Usage: </b> </p>
+  <p> <%= @sentence %> 
+  <% if @audio_file %>
+    <a class="example_mp3_file_audio" onclick="this.firstChild.play()"><audio class="example_mp3_file", src="<%=@audio_file%>"> </audio> <img src="/assets/play_audio.png" width="40" height="40"> </a>
+  <% end %>
+  </p>
+<% end %>
+
+<% if @definitions.size > 0 %>
+  <p> <b> Definition: </b> </p>
+  <% num = 0 %>
+  <% maxnum = @full ? 10 : 2%>
+  <% @definitions.each do |def_category| %>
+    <% if def_category[:definitions].size > 0 %>
+      <p> <b> <%= def_category[:def_type] %> </b> </p>
+      <% def_category[:definitions].each_with_index do |definition, i| %>
+        <p> <%= "#{i+1}: #{definition}" %> </p>
+        <% num += 1 %>
+        <% break if i == 2 %> 
+        <% break if num >= maxnum %>
+      <% end %>
+      <% break if num >= maxnum %>
+    <% end %>
+  <% end %>
+<% end %>
+

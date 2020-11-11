@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="span12">
+    <h1 style="text-align: center"> HANGMAN </h1> 
+  </div>
+</div>
+
+<div class="row">
+  <div class="offset2 span4">
+    <ul class="thumbnails" id="hangman-image-div">
+      <li class="span4">
+        <div class="thumbnail" id="hangman-image">
+          <img src="/assets/Hangman-0.png" alt="">
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="offset1 span3" style="padding-top:30px">
+    <div id="hint-button-div">
+      <a id="hint-button" class="btn btn-success btn-large"> GET HINT </a>
+    </div>
+    <div id="show-meaning-div" style="padding-top:30px">
+      <a id="show-meaning-button" class="btn btn-success btn-large"> SHOW MEANING </a>
+    </div>
+  </div>
+  <div class="span2">
+    <div class="stars_and_medals">
+      <div class="star_num" id="star_num">
+        <b> <%= @stars %> </b>
+      </div>
+    </div>
+    <div class="hangman_stars_and_medals">
+      <div class="star_num" id="hangman_star_num">
+        <b> <%= @hangman_stars %> </b>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span8">
+    <div id="word">
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span8">
+    <div id="letters">
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="offset5 span4">
+    <div id="new-session-button-div">
+      <a id="new-session-button" class="btn btn-success btn-large"> NEW SESSION </a>
+    </div>
+  </div>
+</div>
+

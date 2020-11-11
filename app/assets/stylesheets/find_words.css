@@ -1,0 +1,17 @@
+#word_table {
+}
+
+.find_words_letter {
+  padding-left : 10px;
+  padding-right: 10px;
+  border: solid 2px;
+  text-align   : center;
+}
+
+.found_words_letter {
+  background : lightblue;
+}
+
+.first_click_letter, .selected_letter{
+  background : lightgreen;
+}

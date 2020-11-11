@@ -1,0 +1,64 @@
+#compare {
+  font-size: 20px;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  background-color: white;
+  background-repeat: repeat-x;
+  background-position: 0 40px;
+}
+
+#allcontent {
+  padding-top: 90px;
+}
+
+.stars_and_medals {
+  background-image: url(/assets/spelling-star.jpg);
+  height: 105px;
+}
+
+.hangman_stars_and_medals {
+  background-image: url(/assets/hangman-star.jpg);
+  height: 105px;
+}
+
+.star_num {
+  padding-top: 50px;
+  font-size: 38px;
+  text-align: center;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -55px;
+}
+
+.logout {
+  float: right;
+}
+
+#canvas {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin-top: -40px;
+        border: 1px solid #555;
+}
+
+footer,.push {
+ height: 55px;
+ text-align: center;
+}
+
+footer a {
+  margin-left: 10px;
+  margin-right: 10px;
+}

@@ -1,0 +1,25 @@
+<h1>Listing grade_week_words</h1>
+
+<table>
+  <tr>
+    <th>Grade</th>
+    <th>Word</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @grade_week_words.each do |grade_week_word| %>
+  <tr>
+    <td><%= grade_week_word.grade_id %></td>
+    <td><%= grade_week_word.word_id %></td>
+    <td><%= link_to 'Show', grade_week_word %></td>
+    <td><%= link_to 'Edit', edit_grade_week_word_path(grade_week_word) %></td>
+    <td><%= link_to 'Destroy', grade_week_word, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Grade week word', new_grade_week_word_path %>

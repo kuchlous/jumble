@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Aadi Surprise</title>
+  <%= javascript_include_tag('aadi_bday/d3') %> 
+</head>
+<body>
+  <div id="outer">
+    <p id="instructions">Where do you think you should click?</p>
+    <div id="container">
+      <svg>
+      </svg>
+    </div>
+  </div>
+  <div id="firecracker"> </div>
+  <%= javascript_include_tag('aadi_bday/aadi_bday') %> 
+  <%= stylesheet_link_tag('aadi_bday/aadi_bday') %>
+</body>
+</html>
+

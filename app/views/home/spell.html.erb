@@ -1,0 +1,18 @@
+<% all_words = @words.collect { |w| '\'' + w.word + '\'' } %>
+<% audios = @words.collect { |w| '\'' + w.audio_types + '\'' } %>
+<% mistakes = @words.collect { |w| 
+     w.mistakes[0..2].collect { |m| 
+       '\'' + m + '\''
+     }.join(',') 
+   }.collect { |str| 
+     '[' + str + ']' 
+   }.join(',') %>
+<script type="text/javascript">
+  all_words = [<%= all_words.join(',')%>];
+  audios = [<%= audios.join(',')%>];
+  prev_mistakes = [ <%= mistakes %> ];
+</script>
+<%= javascript_include_tag ('spell') %>
+<%= javascript_include_tag ('hangman') %>
+<%= javascript_include_tag ('find_words') %>
+<%= render "draw_spell" %>

@@ -1,0 +1,23 @@
+        <%= stylesheet_link_tag ('openid') %>
+        <%= javascript_include_tag ('openid-selector-1.3/openid-jquery') %>
+        <%= javascript_include_tag ('openid-selector-1.3/openid-en') %>
+
+<script type="text/javascript">
+  jQuery(document).ready(function() {
+    openid.init('user_session[openid_identifier]');
+  });
+</script>
+
+<% login_path = url_for :controller => "user_sessions", :action => "create" %>
+<%= form_tag login_path, :method => :post, :id => "openid_form" do %>
+    <div id="openid_choice">
+      <p>Please click your account provider:</p>
+      <div id="openid_btns"></div>
+    </div>
+
+    <div id="openid_input_area">
+      <!-- <%= text_field_tag 'openid_identifier', :id => 'openid_identifier', :value => 'https://'%> -->
+        <input type="text" name="user_session[openid_identifier]" value="https://" id="user_session[openid_identifier]">
+      <%= submit_tag "Sign-In" %>
+    </div>
+<% end %>

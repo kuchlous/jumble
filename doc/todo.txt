@@ -1,0 +1,11 @@
+- Make placeholder ('Spell') disappear on focus
+- Add challenges
+  - Three in a row
+  - Five in a row correct
+  - Difficult word
+  - 2 Difficult words
+  - No skip for 10 words
+- Levels
+  - Make challenges harder
+- 1 star point for each correct answer without retries
+  1/2 star point for retries
