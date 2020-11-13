@@ -81,7 +81,7 @@ var is_empty = function(ch)
 
 // returns -1 if not able to fit in any column, else returns
 // the start (row, col), else returns [-1, -1]
-var fit_in_column = function(word_array, word, columns_done) 
+var fit_in_column = function(word_array, word, columns_done)
 {
   for (var i=0; i<column_order.length; i++) {
     var column = column_order[i];
@@ -111,7 +111,7 @@ var fit_in_column = function(word_array, word, columns_done)
   return [-1, -1];
 }
 
-var fit_in_row = function(word_array, word, rows_done) 
+var fit_in_row = function(word_array, word, rows_done)
 {
   for (var i=0; i<row_order.length; i++) {
     var row = row_order[i];
@@ -161,7 +161,7 @@ var fit_word = function(word_array, word, rows_done, columns_done)
   while (!tried_row || !tried_column) {
     if (try_row) {
       var start_coord = fit_in_row(word_array, word, rows_done);
-      if (start_coord[0] != -1) { 
+      if (start_coord[0] != -1) {
         did_it_fit.is_row = true;
         did_it_fit.start = start_coord;
         log_word_array(word_array);
@@ -172,7 +172,7 @@ var fit_word = function(word_array, word, rows_done, columns_done)
     }
     if (try_column) {
       var start_coord = fit_in_column(word_array, word, columns_done);
-      if (start_coord[0] != -1) { 
+      if (start_coord[0] != -1) {
         did_it_fit.is_row = false;
         did_it_fit.start = start_coord;
         log_word_array(word_array);
@@ -193,7 +193,7 @@ var arrange_words = function(words, size) {
   init_row_col_order(size);
 
   var n_tries = 0;
-  do { 
+  do {
     n_tries ++;
     words_fit = new Object;
     rows_done = new Object;
@@ -206,7 +206,7 @@ var arrange_words = function(words, size) {
         words_fit[word] = did_it_fit;
       }
     }
-  } while ((Object.keys(words_fit).length < words.length) && (n_tries < MAX_TRIES)); 
+  } while ((Object.keys(words_fit).length < words.length) && (n_tries < MAX_TRIES));
 
   log_word_array(word_array);
 
@@ -418,11 +418,11 @@ var create_help_modal = function () {
                    '</div>'].join(' ')).appendTo($('#content'));
 }
 
-var print_box = function() 
+var print_box = function()
 {
   var box_json = JSON.stringify(word_array);
   var words_fit_json = JSON.stringify(words_fit);
-  $.ajax({ url: 'print_word_box', 
+  $.ajax({ url: 'print_word_box',
            async: false,
            type: 'POST',
            headers: {
@@ -509,7 +509,7 @@ var display_words = function (word_array, input)
       $span2 = $('<div/>').attr({
                  class: 'span2'
                  }).appendTo($row);
-      $next_session_button = $('<a id="next_session_button" class="btn btn-success btn-large"> Start New Session</a>').appendTo($span2);
+      $next_session_button = $('<a id="next_session_button" class="btn btn-success btn-large"> New Session</a>').appendTo($span2);
       $next_session_button.hide();
       $next_session_button.click(input["callback_fn"]);
     }
@@ -565,17 +565,17 @@ var display_words = function (word_array, input)
       }
       else {
         $td_audio = $('<td>' +
-                   '<a class="example_mp3_file_audio" onclick="this.firstChild.play()">' + 
-                     '<audio class="example_mp3_file", src="/assets/audios/' + word.toLowerCase() + '_' + word_audio_type + '.mp3">' + '</audio>' + 
+                   '<a class="example_mp3_file_audio" onclick="this.firstChild.play()">' +
+                     '<audio class="example_mp3_file", src="/assets/audios/' + word.toLowerCase() + '_' + word_audio_type + '.mp3">' + '</audio>' +
                      '<img src="/assets/play_audio.png" width="20" height="20">' +
-                   '</a>' + 
+                   '</a>' +
                  '</td>').appendTo($tr);
       }
       $td_audio.attr({class: 'find_words_letter'});
     }
     $td = $('<td>' +
               '<h2>' + word + '</h2>' +
-            '</td>').appendTo($tr); 
+            '</td>').appendTo($tr);
     $td.attr({class: 'find_words_letter'});
     $tr.attr({id: 'fit_word_' + word});
   }
@@ -585,7 +585,7 @@ var finished = function(input)
 {
   $('#show_all_button').hide();
   if (input["callback_fn"]) {
-    $('#next_session_button').html('Start New Session');
+    $('#next_session_button').html('New Session');
     $('#next_session_button').show();
   }
   if (input["show_rearrange"]) {

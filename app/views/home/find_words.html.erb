@@ -4,8 +4,8 @@
 <% audios = @words.collect { |w| '\'' + (w.audio_types ? w.audio_types : '') + '\'' } %>
 <script type="text/javascript">
   $(document).ready(function() {
-    var top_words = [ <%= all_words.join(',')%>];
-    var audios = [<%= audios.join(',')%>];
+    var top_words = [ <%= raw all_words.join(',')%>];
+    var audios = [<%= raw audios.join(',')%>];
     <% if @word_box_id %>
       var print_word_array = <%= raw @word_array_json %>;
       var in_words_fit = <%= raw @words_fit_json %>;

@@ -16,9 +16,13 @@ Jumble::Application.routes.draw do
 
   resources :users
 
+  post 'teachers/print_word_box', :to => 'teachers#print_word_box'
   get 'teachers/print_word_box/:id', :to => 'teachers#print_word_box'
   post 'teachers/make_word_box', :to => 'teachers#make_word_box'
+  post 'teachers/add_words_db', :to => 'teachers#make_word_box'
   get 'home/find_words/:id', :to => 'home#find_words'
+  post 'home/get_meaning', :to => 'home#get_meaning'
+  post 'home/update_spell_score', :to => 'home#update_spell_score'
 
   # Privacy Policy
   get 'privacy', :to => 'main#privacy', :as => :privacy

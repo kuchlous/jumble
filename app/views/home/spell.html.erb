@@ -8,9 +8,9 @@
      '[' + str + ']' 
    }.join(',') %>
 <script type="text/javascript">
-  all_words = [<%= all_words.join(',')%>];
-  audios = [<%= audios.join(',')%>];
-  prev_mistakes = [ <%= mistakes %> ];
+  all_words = [<%= raw all_words.join(',')%>];
+  audios = [<%= raw audios.join(',')%>];
+  prev_mistakes = [ <%= raw mistakes %> ];
 </script>
 <%= javascript_include_tag ('spell') %>
 <%= javascript_include_tag ('hangman') %>

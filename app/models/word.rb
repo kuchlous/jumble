@@ -12,16 +12,19 @@ class Word < ActiveRecord::Base
     response = nil
     suffix = ""
     if (source == 1)
-      suffix = "_american";
-      logger.info("Trying to get word from https://ssl.gstatic.com/dictionary/static/sounds/de/0/#{self.word}")
-      response = HTTParty.get("https://ssl.gstatic.com/dictionary/static/sounds/de/0/#{self.word}.mp3")
-    else 
-      suffix = "_british";
-      logger.info("Trying to get word from http://www.howjsay.com/mp3/#{self.word}.mp3")
-      response = HTTParty.get("http://www.howjsay.com/mp3/#{self.word}.mp3")
+      suffix = "_american"
+      url = "https://ssl.gstatic.com/dictionary/static/sounds/20200429/#{self.word}--_us_1.mp3"
+    elsif (source == 2)
+      suffix = "_british"
+      url = "http://www.howjsay.com/mp3/#{self.word}.mp3"
+    else
+      suffix = "_indian"
+      url = "https://ssl.gstatic.com/dictionary/static/pronunciation/2020-02-14/audio/ho/#{self.word}_en_in_1.mp3"
     end
     # wav file
     # response = HTTParty.get("http://www.cooldictionary.com/say.mpl?phrase=#{word}&voice=male&q=aa.wav")
+    logger.info("Trying to get word from #{url}")
+    response = HTTParty.get(url)
 
     if (response.body) 
       f = File.new(::Rails.root.to_s + "/public/assets/audios/#{self.word}#{suffix}.mp3", "wb")
@@ -89,7 +92,7 @@ class Word < ActiveRecord::Base
 
   def get_definitions
     definitions = []
-    DictClient.new("all.dict.org").connect() do |dc|
+    DictClient.new("dict.org").connect() do |dc|
       definitions = dc.define(self.word, "wn")
       dc.disconnect()
     end

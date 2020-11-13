@@ -272,8 +272,8 @@ class DictClient < DictBase
 
       # Nope, open a connection
       puts "host:#{host} port:#{port}"
-      # @conn = TCPSocket.open( host, port )
-      @conn = TCPSocket.open( "all.dict.org", 2628 )
+      @conn = TCPSocket.open( host, port )
+      # @conn = TCPSocket.open( "all.dict.org", 2628 )
       puts "Connected..."
       
       # Get the banner.

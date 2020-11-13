@@ -2,12 +2,9 @@
 <html>
 <head>
   <title>Jumble</title>
-  <script src="http://www.google.com/jsapi" type="text/javascript"> </script> 
-  <script type="text/javascript">
-    google.load("jquery",    "1.7.1",  { uncompressed: true });
-    google.load("jqueryui",    "1.8.16",  { uncompressed: true });
-  </script> 
-  <%= javascript_include_tag ('bootstrap/bootstrap') %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"> </script> 
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"> </script> 
+  <%= javascript_include_tag ('bootstrap') %>
   <%= javascript_include_tag ('application') %>
   <%= stylesheet_link_tag 'bootstrap', :media => "all" %>
   <%= stylesheet_link_tag 'application', :media => "all" %>
@@ -71,11 +68,6 @@
     <% end %>
 
     <%= yield %>
-    </div>
-    <div id="browser-error">
-       <div class="span6 offset3">
-         <h1> We only support Chrome and Mozilla Firefox at this point. Please download from <a href="http://mozilla.org/en-US/firefox/new/"> Mozilla </a> or <a href="https://www.google.com/chrome"> Google </a> </h1>
-       </div>
     </div>
   </div>
   <div class="push"> </div>
