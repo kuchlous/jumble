@@ -19,20 +19,20 @@ class Word < ActiveRecord::Base
       url = "http://www.howjsay.com/mp3/#{self.word}.mp3"
     else
       suffix = "_indian"
-      url = "https://ssl.gstatic.com/dictionary/static/pronunciation/2020-02-14/audio/ho/#{self.word}_en_in_1.mp3"
+      url = "https://ssl.gstatic.com/dictionary/static/pronunciation/2020-02-14/audio/#{self.word[0..1]}/#{self.word}_en_in_1.mp3"
     end
     # wav file
     # response = HTTParty.get("http://www.cooldictionary.com/say.mpl?phrase=#{word}&voice=male&q=aa.wav")
     logger.info("Trying to get word from #{url}")
     response = HTTParty.get(url)
 
-    if (response.body) 
+    if (response.body && response.code == 200) 
       f = File.new(::Rails.root.to_s + "/public/assets/audios/#{self.word}#{suffix}.mp3", "wb")
       f.write(response.body)
       f.close
       return true
     else
-      self.errors << "Word does not exist"
+      logger.info("Word does not exist")
       return false
     end
   end
